@@ -3,7 +3,7 @@ import javax.swing.*;
 public class CalcRunner {
     public static void main(String[] args) {
         CalcFunction f = new CalcFunction();
-        Object[] option1 = {"Pound", "YEN","US","Bitcoin","Quit"};
+        Object[] option1 = {"Pound", "YEN","US","Bitcoin","AustralianDollar","Quit"};
         Object[] option2 = {"Try Again", "Quit"};
 
         while (true) {
@@ -59,7 +59,25 @@ public class CalcRunner {
                     } else {
                         break;
                     }
+
                 } else if (choice1 == 4) {
+                    f.EuroToAustraliandollar(Minput);
+                    int choice2 = JOptionPane.showOptionDialog(null, "What do you want to do", "currency converter",
+                            JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE, null, option2, option2[1]);
+
+                    if (choice2 == 0) {
+
+                    } else {
+                        break;
+                    }
+
+
+
+
+
+
+
+                } else if (choice1 == 5) {
                     break;
 
 

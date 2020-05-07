@@ -27,4 +27,8 @@ public class CalcFunction {
         double Bitcoin = Minput * 0.92;
         JOptionPane.showMessageDialog(null,"Amount of JPY:" + Bitcoin +"฿");
     }
+    public void EuroToAustraliandollar(double Minput){
+        double AustralianDollar = Minput * 0.59;
+        JOptionPane.showMessageDialog(null,"Amount of JPY:" + AustralianDollar +"a$");
+    }
 }
