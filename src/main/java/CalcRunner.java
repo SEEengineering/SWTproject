@@ -59,6 +59,8 @@ public class CalcRunner {
                     } else {
                         break;
                     }
+                } else if (choice1 == 4) {
+                    break;
 
 
                 } else {
