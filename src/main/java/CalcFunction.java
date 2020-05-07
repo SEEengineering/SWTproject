@@ -11,12 +11,20 @@ public class CalcFunction {
         }
     }
 
-    public void dollarToNok(double input){
-        double nok = input * 8.2;
-        JOptionPane.showMessageDialog(null,"Amount of Nok:" + nok+"kr");
+    public void EuroTopound(double Minput){
+        double pound = Minput / 1.14 ;
+        JOptionPane.showMessageDialog(null,"Amount of pound:" + pound+"£");
     }
-    public void dollarToJPY(double input){
-        double JPY = input * 112.7;
-        JOptionPane.showMessageDialog(null,"Amount of JPY:" + JPY+"kr");
+    public void EuroToJPY(double Minput){
+        double JPY = Minput * 0.00869111767;
+        JOptionPane.showMessageDialog(null,"Amount of JPY:" + JPY +"kr");
+    }
+    public void EuroToUS(double Minput){
+        double US = Minput * 0.92;
+        JOptionPane.showMessageDialog(null,"Amount of JPY:" + US +"$");
+    }
+    public void EuroToBitcoin(double Minput){
+        double Bitcoin = Minput * 0.92;
+        JOptionPane.showMessageDialog(null,"Amount of JPY:" + Bitcoin +"฿");
     }
 }
