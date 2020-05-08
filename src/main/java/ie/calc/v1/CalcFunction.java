@@ -40,18 +40,18 @@ public class CalcFunction {
 
     public void GramsToPounds(double Minput) {
         double pound = Minput / 454;
-        JOptionPane.showMessageDialog(null,"Mass in Pounds:" + pound +"lbs");
+        JOptionPane.showMessageDialog(null,"Mass in Pounds: " + pound +"lbs");
     }
 
     public void GramsToStone(double Minput) {
         double stone = Minput / 6350;
-        JOptionPane.showMessageDialog(null,"Mass in Stone:" + stone +"st");
+        JOptionPane.showMessageDialog(null,"Mass in Stone: " + stone +"st");
     }
     public void GramsToOunce(double Minput) {
         double ounce = Minput / 28.35;
-        JOptionPane.showMessageDialog(null,"Mass in Ounce:" + ounce +"oz");
+        JOptionPane.showMessageDialog(null,"Mass in Ounce: " + ounce +"oz");
     }
     public void GramsToEngFormat(double Minput) {
-        double ounce = Minput / 28.35;
+        JOptionPane.showMessageDialog(null,"Mass base 1000: " + new EngNotation(Minput) +"oz");
     }
 }
