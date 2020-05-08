@@ -52,6 +52,7 @@ public class CalcFunction {
         JOptionPane.showMessageDialog(null,"Mass in Ounce: " + ounce +"oz");
     }
     public void GramsToEngFormat(double Minput) {
-        JOptionPane.showMessageDialog(null,"Mass base 1000: " + new EngNotation(Minput) +"oz");
+        JOptionPane.showMessageDialog(null,"Grams in engineering notation: " +
+                new EngNotation(Minput).getEng());
     }
 }

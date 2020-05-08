@@ -3,12 +3,13 @@ package ie.calc.v1;
 import java.util.StringTokenizer;
 
 public class EngNotation {
-    private final static int PREFIX_OFFSET = 5;
+    private final static int PREFIX_OFFSET = 1;
     private final static String[] PREFIX_ARRAY = {"mg", "g", "kg"};
     private double engValue;
+    private String eng;
     public EngNotation(double calcInput) {
         this.engValue = calcInput;
-        convert(engValue, decimalPoint());
+        eng = convert(engValue, decimalPoint());
     }
 
     public static String convert(double val, int dp) {
@@ -59,5 +60,9 @@ public class EngNotation {
             return n2;
         }
         return 0;
+    }
+
+    public String getEng() {
+        return eng;
     }
 }
