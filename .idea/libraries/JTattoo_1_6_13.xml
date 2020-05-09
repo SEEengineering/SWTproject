@@ -2,6 +2,7 @@
   <library name="JTattoo-1.6.13">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/jtatoo/JTattoo-1.6.13.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../Documents/JTattoo-1.6.13.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
