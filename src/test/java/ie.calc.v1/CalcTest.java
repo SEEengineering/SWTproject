@@ -5,10 +5,10 @@ import org.junit.jupiter.api.Test;
 
 public class CalcTest {
 
-    @DisplayName("Checking MassConverter Constructor with empty input")
+    @DisplayName("Checking MassConverter Constructor with null input")
     @Test
     void testConstructorFail() {
-        assertThrows(IllegalArgumentException.class, () -> new MassConverter(""));
+        assertThrows(IllegalArgumentException.class, () -> new MassConverter(null));
     }
 
     @DisplayName("Checking MassConverter Constructor with valid input")
