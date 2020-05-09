@@ -4,23 +4,18 @@ import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.Test;
 
 public class CalcTest {
-    private MassConverter mass;
 
-    @BeforeEach
-    void init(TestInfo testInfo, TestReporter testReporter){
-        testReporter.publishEntry("Testing" + "10" + testInfo.getDisplayName());
-        mass = new MassConverter("10");
-    }
-
-    @DisplayName("Checking MassConverter Constructor for Illegal char")
+    @DisplayName("Checking MassConverter Constructor with empty input")
     @Test
     void testConstructorFail() {
-        assertThrows(IllegalArgumentException.class, () -> new MassConverter("a"));
+        assertThrows(IllegalArgumentException.class, () -> new MassConverter(""));
     }
 
-    @DisplayName("Checking MassConverter Constructor")
+    @DisplayName("Checking MassConverter Constructor with valid input")
     @Test
     void testConstructorPass() {
-        assertEquals(10,mass.getCalcInput());
+        MassConverter mass = new MassConverter("100");
+        assertEquals(100,mass.getCalcInput());
     }
+
 }

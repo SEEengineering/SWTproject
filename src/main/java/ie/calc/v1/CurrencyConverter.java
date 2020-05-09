@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class CurrencyConverter {
     public CurrencyConverter(String input) {
-        CalcFunction f = new CalcFunction();
+        CalcFunctions f = new CalcFunctions();
         Object[] option1 = {"Pound", "YEN","US","Bitcoin","AustralianDollar","Quit"};
         Object[] option2 = {"Try Again", "Quit"};
 

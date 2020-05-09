@@ -6,11 +6,26 @@ public class MassConverter extends JOptionPane {
     private int selection;
     private String calcInput;
     public MassConverter(String input) {
-        if(input.matches("[a-zA-Z]") || input.matches("$&+,:;=?@#|'<>.^*()%!-"))
-            throw new IllegalArgumentException("Must be numeric character");
+        if(input == null || input.equals(""))
+            throw new IllegalArgumentException("Missing Data");
         else
             this.calcInput = input;
-        CalcFunction f = new CalcFunction();
+
+    }
+    public int getSelection() {
+        return selection;
+    }
+
+    public void setSelection(int selectedOption) {
+        this.selection = selectedOption;
+    }
+
+    public double getCalcInput() {
+        return Double.parseDouble(calcInput);
+    }
+
+    public void showMassGUI() {
+        CalcFunctions f = new CalcFunctions();
         Object[] option1 = {"Pound", "Stone", "Ounce", "EngNotation", "Quit"};
         setSelection(showOptionDialog(null, "Convert " + getCalcInput() +" grams to",
                 "Mass converter", YES_NO_CANCEL_OPTION, QUESTION_MESSAGE, null,
@@ -36,16 +51,5 @@ public class MassConverter extends JOptionPane {
                 showMessageDialog(null,"Something Went wrong and Event has been log",
                         "Inane warning",WARNING_MESSAGE);
         }
-    }
-    public int getSelection() {
-        return selection;
-    }
-
-    public void setSelection(int selectedOption) {
-        this.selection = selectedOption;
-    }
-
-    public double getCalcInput() {
-        return Double.parseDouble(calcInput);
     }
 }

@@ -2,7 +2,7 @@ package ie.calc.v1;
 
 import javax.swing.*;
 
-public class CalcFunction {
+public class CalcFunctions {
     public boolean check(String input){
         try{
         double x = Double.parseDouble(input);

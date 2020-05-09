@@ -272,7 +272,7 @@ public class CalcConverterGUI extends JFrame {
         if(jRadioButton3.isSelected()) {
             new CurrencyConverter(jTextField1.getText());
         } else if (jRadioButton4.isSelected()) {
-            new MassConverter(jTextField1.getText());
+            new MassConverter(jTextField1.getText()).showMassGUI();
         } else if (jRadioButton5.isSelected()) {
 
         } else if (jRadioButton6.isSelected()) {

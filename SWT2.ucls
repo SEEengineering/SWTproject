@@ -46,7 +46,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="ie.calc.v1.CalcFunction" project="SWTproject" 
+  <class id="6" language="java" name="ie.calc.v1.CalcFunctions" project="SWTproject"
     file="/SWTproject/src/main/java/ie/calc/v1/CalcFunction.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="580" y="604"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
