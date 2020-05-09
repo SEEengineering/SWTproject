@@ -71,12 +71,6 @@ public class CalcRunner {
                         break;
                     }
 
-
-
-
-
-
-
                 } else if (choice1 == 5) {
                     break;
 
