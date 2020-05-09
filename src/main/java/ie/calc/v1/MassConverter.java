@@ -3,7 +3,6 @@ package ie.calc.v1;
 import javax.swing.*;
 
 public class MassConverter extends JOptionPane {
-    private int selection;
     private String calcInput;
     public MassConverter(String input) {
         if(input == null || input.equals(""))
@@ -11,13 +10,6 @@ public class MassConverter extends JOptionPane {
         else
             this.calcInput = input;
 
-    }
-    public int getSelection() {
-        return selection;
-    }
-
-    public void setSelection(int selectedOption) {
-        this.selection = selectedOption;
     }
 
     public double getCalcInput() {
@@ -27,11 +19,11 @@ public class MassConverter extends JOptionPane {
     public void showMassGUI() {
         CalcFunctions f = new CalcFunctions();
         Object[] option1 = {"Pound", "Stone", "Ounce", "EngNotation", "Quit"};
-        setSelection(showOptionDialog(null, "Convert " + getCalcInput() +" grams to",
+        int setSelection = showOptionDialog(null, "Convert " + getCalcInput() +" grams to",
                 "Mass converter", YES_NO_CANCEL_OPTION, QUESTION_MESSAGE, null,
-                option1, option1[2]));
+                option1, option1[2]);
 
-        switch(getSelection()) {
+        switch(setSelection) {
             case 0:
                 f.GramsToPounds(getCalcInput());
                 break;
