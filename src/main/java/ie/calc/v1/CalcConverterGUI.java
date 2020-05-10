@@ -100,7 +100,7 @@ public class CalcConverterGUI extends JFrame {
 
         buttonGroup2.add(jRadioButton3);
         jRadioButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton3.setText("Currency");
+        jRadioButton3.setText("Currency(Euro)");
         jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton3ActionPerformed(evt);
@@ -109,7 +109,7 @@ public class CalcConverterGUI extends JFrame {
 
         buttonGroup2.add(jRadioButton4);
         jRadioButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton4.setText("Mass");
+        jRadioButton4.setText("Mass(Grams)");
         jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton4ActionPerformed(evt);
@@ -127,7 +127,7 @@ public class CalcConverterGUI extends JFrame {
 
         buttonGroup2.add(jRadioButton6);
         jRadioButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton6.setText("UwU");
+        jRadioButton6.setText("Volume(Litres)");
         jRadioButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton6ActionPerformed(evt);
@@ -277,7 +277,7 @@ public class CalcConverterGUI extends JFrame {
         } else if (jRadioButton5.isSelected()) {
 
         } else if (jRadioButton6.isSelected()) {
-
+            new VolumeConverter(jTextField1.getText()).showVolumeGUI();
         }
     }
 
