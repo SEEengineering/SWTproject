@@ -14,28 +14,28 @@ public class CalcFunctions {
     }
 
     public void EuroTopound(double Minput){
-        double pound = Minput / 1.14 ;
-        JOptionPane.showMessageDialog(null,"Amount of pound:" + pound+"£");
+        double pound = Minput * 0.88 ;
+        JOptionPane.showMessageDialog(null,"Amount of GBP:" + pound+"£");
     }
 
     public void EuroToJPY(double Minput){
-        double JPY = Minput * 0.00869111767;
+        double JPY = Minput * 117.03;
         JOptionPane.showMessageDialog(null,"Amount of JPY:" + JPY +"kr");
     }
 
     public void EuroToUS(double Minput){
-        double US = Minput * 0.92;
-        JOptionPane.showMessageDialog(null,"Amount of JPY:" + US +"$");
+        double US = Minput * 1.10;
+        JOptionPane.showMessageDialog(null,"Amount of USD:" + US +"$");
     }
 
     public void EuroToBitcoin(double Minput){
-        double Bitcoin = Minput * 0.92;
-        JOptionPane.showMessageDialog(null,"Amount of JPY:" + Bitcoin +"฿");
+        double Bitcoin = Minput / 7784.37;
+        JOptionPane.showMessageDialog(null,"Amount of BTC:" + Bitcoin +"฿");
     }
 
     public void EuroToAustraliandollar(double Minput){
-        double AustralianDollar = Minput * 0.59;
-        JOptionPane.showMessageDialog(null,"Amount of JPY:" + AustralianDollar +"a$");
+        double AustralianDollar = Minput * 1.68;
+        JOptionPane.showMessageDialog(null,"Amount of AUS:" + AustralianDollar +"a$");
     }
 
     public void GramsToPounds(double Minput) {
@@ -52,6 +52,30 @@ public class CalcFunctions {
         JOptionPane.showMessageDialog(null,"Mass in Ounce: " + ounce +"oz");
     }
     public void GramsToEngFormat(double Minput) {
+        JOptionPane.showMessageDialog(null,"Grams in engineering notation: " +
+                new EngNotation(Minput).getEng());
+    }
+
+    public void LitresToGallons(double Minput) {
+        double gallons = Minput / 4.546;
+        JOptionPane.showMessageDialog(null,"Litres in Gallons: " + gallons +"gallons");
+    }
+
+    public void LitresToPints(double Minput) {
+        double pint = Minput * 1.76;
+        JOptionPane.showMessageDialog(null,"Litres in Pints: " + pint +"pints");
+    }
+    public void LitresToOunces(double Minput) {
+        double ounce = Minput * 35.195;
+        JOptionPane.showMessageDialog(null,"Litres in Ounces: " + ounce +"ounces");
+    }
+
+    public void LitresToCubicFoot(double Minput) {
+        double cubicFoot = Minput / 28.317;
+        JOptionPane.showMessageDialog(null,"Litres in Cubic feet: " + cubicFoot +"cubic feet");
+    }
+
+    public void LitresToEng(double Minput) {
         JOptionPane.showMessageDialog(null,"Grams in engineering notation: " +
                 new EngNotation(Minput).getEng());
     }
