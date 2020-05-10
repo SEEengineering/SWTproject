@@ -118,7 +118,7 @@ public class CalcConverterGUI extends JFrame {
 
         buttonGroup2.add(jRadioButton5);
         jRadioButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton5.setText("Distance");
+        jRadioButton5.setText("Distance(Km)");
         jRadioButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton5ActionPerformed(evt);
@@ -275,7 +275,7 @@ public class CalcConverterGUI extends JFrame {
         } else if (jRadioButton4.isSelected()) {
             new MassConverter(jTextField1.getText()).showMassGUI();
         } else if (jRadioButton5.isSelected()) {
-
+            new DistanceConverter(jTextField1.getText()).showDistanceGUI();
         } else if (jRadioButton6.isSelected()) {
             new VolumeConverter(jTextField1.getText()).showVolumeGUI();
         }
