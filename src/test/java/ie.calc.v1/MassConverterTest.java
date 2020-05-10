@@ -1,11 +1,16 @@
 package ie.calc.v1;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class MassConverterTest {
+
+    @BeforeEach
+    void init(TestInfo testInfo, TestReporter testReporter) {
+        testReporter.publishEntry("Testing" + " " + testInfo.getDisplayName());
+    }
 
     @DisplayName("Checking MassConverter Constructor with null input")
     @Test
