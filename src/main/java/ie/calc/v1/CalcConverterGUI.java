@@ -270,7 +270,8 @@ public class CalcConverterGUI extends JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         if(jRadioButton3.isSelected()) {
-            new CurrencyConverter(jTextField1.getText());
+
+            new CurrencyConverter(jTextField1.getText()).CurrencyGUI();
         } else if (jRadioButton4.isSelected()) {
             new MassConverter(jTextField1.getText()).showMassGUI();
         } else if (jRadioButton5.isSelected()) {
