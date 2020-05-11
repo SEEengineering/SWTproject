@@ -6,11 +6,13 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class EngNotationTest {
     private EngNotation engN;
+    private String[] prefixMass = {"mg","g","kg"};
+    private int prefixOffset = 1;
 
     @BeforeEach
     void init(TestInfo testInfo, TestReporter testReporter) {
         testReporter.publishEntry("Testing" + " " + testInfo.getDisplayName());
-        engN = new EngNotation(1000);
+        engN = new EngNotation(1000,prefixMass,prefixOffset);
     }
 
     @DisplayName("Checking Convert Method")
@@ -28,7 +30,7 @@ public class EngNotationTest {
     @DisplayName("Checking EngNotation Constructor with invalid input")
     @Test
     void testConstructorFail() {
-        assertThrows(IllegalArgumentException.class, () -> new EngNotation(-1));
+        assertThrows(IllegalArgumentException.class, () -> new EngNotation(-1,prefixMass,prefixOffset));
     }
 
     @DisplayName("Checking EngNotation Constructor with valid input")
