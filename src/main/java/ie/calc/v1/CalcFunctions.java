@@ -78,6 +78,37 @@ public class CalcFunctions {
         return new EngNotation(Minput,prefixArray,prefixOffset).getEng();
     }
 
+    public String KmToMetres(double Minput) {
+        df = new DecimalFormat("#.####");
+        return df.format(Minput * 1000);
+    }
+
+    public String KmToMiles(double Minput) {
+        df = new DecimalFormat("#.######");
+        return df.format(Minput / 1.609);
+    }
+
+    public String KmToYards(double Minput) {
+        df = new DecimalFormat("#.##");
+        return df.format(Minput * 1094);
+    }
+
+    public String KmToFeet(double Minput) {
+        df = new DecimalFormat("#.##");
+        return df.format(Minput * 3281);
+    }
+
+    public String KmToInches(double Minput) {
+        df = new DecimalFormat("#.##");
+        return df.format(Minput * 39370);
+    }
+
+    public String KmToEngFormat(double Minput) {
+        String[] prefixArray = {"mm", "m", "km"};
+        int prefixOffset = 1;
+        return new EngNotation(Minput,prefixArray,prefixOffset).getEng();
+    }
+
     public double getVal() {
         return val;
     }
