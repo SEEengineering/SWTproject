@@ -31,6 +31,8 @@ public class EngNotationTest {
     @Test
     void testConstructorFail() {
         assertThrows(IllegalArgumentException.class, () -> new EngNotation(-1,prefixMass,prefixOffset));
+        assertThrows(NullPointerException.class, () -> new EngNotation(1000,null,prefixOffset));
+        assertThrows(IllegalArgumentException.class, () -> new EngNotation(1000,prefixMass,-1));
     }
 
     @DisplayName("Checking EngNotation Constructor with valid input")
