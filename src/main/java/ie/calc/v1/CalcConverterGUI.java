@@ -5,10 +5,10 @@ import java.awt.event.*;
 
 public class CalcConverterGUI extends JFrame {
 
-    private JButton jButton1;
-    private JButton jButton13;
-    private JButton jButton14;
-    private JButton jButton2;
+    private JButton enterButton;
+    private JButton backSpaceButton;
+    private JButton decimalPointButton;
+    private JButton cancelButton;
     private JButton[] numButtonArray;
     private JRadioButton[] selectionRadioButton;
     private JTextField inputTextField;
@@ -16,19 +16,19 @@ public class CalcConverterGUI extends JFrame {
     public CalcConverterGUI() {
         initComponents();
         selectionRadioButton[0].setEnabled(false);
-        jButton1.setEnabled(false);
+        enterButton.setEnabled(false);
     }
 
     public void enable() {
         inputTextField.setEnabled(true);
         selectionRadioButton[0].setEnabled(false);
         selectionRadioButton[1].setEnabled(true);
-        jButton2.setEnabled(true);
+        cancelButton.setEnabled(true);
         for (JButton jButton : numButtonArray) {
             jButton.setEnabled(true);
         }
-        jButton13.setEnabled(true);
-        jButton14.setEnabled(true);
+        backSpaceButton.setEnabled(true);
+        decimalPointButton.setEnabled(true);
         selectionRadioButton[3].setEnabled(true);
         selectionRadioButton[4].setEnabled(true);
         selectionRadioButton[5].setEnabled(true);
@@ -38,13 +38,13 @@ public class CalcConverterGUI extends JFrame {
         inputTextField.setEnabled(false);
         selectionRadioButton[0].setEnabled(true);
         selectionRadioButton[1].setEnabled(false);
-        jButton1.setEnabled(false);
-        jButton2.setEnabled(false);
+        enterButton.setEnabled(false);
+        cancelButton.setEnabled(false);
         for (JButton jButton : numButtonArray) {
             jButton.setEnabled(false);
         }
-        jButton13.setEnabled(false);
-        jButton14.setEnabled(false);
+        backSpaceButton.setEnabled(false);
+        decimalPointButton.setEnabled(false);
         selectionRadioButton[3].setEnabled(false);
         selectionRadioButton[4].setEnabled(false);
         selectionRadioButton[5].setEnabled(false);
@@ -77,10 +77,10 @@ public class CalcConverterGUI extends JFrame {
         buttonGroup2.add(selectionRadioButton[4]);
         buttonGroup2.add(selectionRadioButton[5]);
 
-        jButton1 = new JButton();
-        jButton2 = new JButton();
-        jButton13 = new JButton();
-        jButton14 = new JButton();
+        enterButton = new JButton();
+        cancelButton = new JButton();
+        backSpaceButton = new JButton();
+        decimalPointButton = new JButton();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("CalcConverter");
@@ -91,35 +91,35 @@ public class CalcConverterGUI extends JFrame {
         inputTextField.setFont(new java.awt.Font("Tahoma", 1, 23)); // NOI18N
         inputTextField.setHorizontalAlignment(JTextField.RIGHT);
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton1.setText("Enter");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        enterButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        enterButton.setText("Enter");
+        enterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                EnterActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton2.setText("C");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        cancelButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        cancelButton.setText("C");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                cancelActionPerformed(evt);
             }
         });
 
-        jButton13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton13.setText("<---");
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
+        backSpaceButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        backSpaceButton.setText("<---");
+        backSpaceButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
+                deleteActionPerformed(evt);
             }
         });
 
-        jButton14.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton14.setText(".");
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
+        decimalPointButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        decimalPointButton.setText(".");
+        decimalPointButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
+                dpActionPerformed(evt);
             }
         });
 
@@ -131,11 +131,11 @@ public class CalcConverterGUI extends JFrame {
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addComponent(inputTextField)
-                                        .addComponent(jButton2, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 124, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(cancelButton, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 124, GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createSequentialGroup()
                                                 .addComponent(selectionRadioButton[1])
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jButton13, GroupLayout.PREFERRED_SIZE, 124, GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(backSpaceButton, GroupLayout.PREFERRED_SIZE, 124, GroupLayout.PREFERRED_SIZE))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                         .addGroup(layout.createSequentialGroup()
@@ -168,10 +168,10 @@ public class CalcConverterGUI extends JFrame {
                                                         .addGroup(layout.createSequentialGroup()
                                                                 .addComponent(numButtonArray[0], GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
                                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(jButton14, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)))
+                                                                .addComponent(decimalPointButton, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)))
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(jButton1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(enterButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                         .addComponent(numButtonArray[3], GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE))))
                                 .addContainerGap())
         );
@@ -187,14 +187,14 @@ public class CalcConverterGUI extends JFrame {
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(selectionRadioButton[3])
-                                        .addComponent(jButton13, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(backSpaceButton, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
                                         .addComponent(selectionRadioButton[1]))
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(selectionRadioButton[4])
                                 .addGap(7, 7, 7)
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(selectionRadioButton[5])
-                                        .addComponent(jButton2, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(cancelButton, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                                         .addComponent(numButtonArray[7], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
@@ -213,21 +213,21 @@ public class CalcConverterGUI extends JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                         .addComponent(numButtonArray[0], GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                                        .addComponent(jButton1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton14, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(enterButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(decimalPointButton, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void EnterActionPerformed(java.awt.event.ActionEvent evt) {
         if(selectionRadioButton[2].isSelected()) {
             new CurrencyConverter(inputTextField.getText()).showUI();
         } else if (selectionRadioButton[3].isSelected()) {
             new MassConverter(inputTextField.getText()).showUI();
         } else if (selectionRadioButton[4].isSelected()) {
-
+            new DistanceConverter(inputTextField.getText()).showUI();
         } else if (selectionRadioButton[5].isSelected()) {
             new VolumeConverter(inputTextField.getText()).showUI();
         }
@@ -249,16 +249,16 @@ public class CalcConverterGUI extends JFrame {
             case "Volume(Litres)":
             case "Mass(Grams)":
             case "Distance":
-                jButton1.setEnabled(true);
+                enterButton.setEnabled(true);
                 break;
         }
     }
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {
         inputTextField.setText("");
     }
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {
         int length = inputTextField.getText().length();
         int num = inputTextField.getText().length() - 1;
         String store;
@@ -271,7 +271,7 @@ public class CalcConverterGUI extends JFrame {
         }
     }
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void dpActionPerformed(java.awt.event.ActionEvent evt) {
         inputTextField.setText(inputTextField.getText() + ".");
     }
 }
