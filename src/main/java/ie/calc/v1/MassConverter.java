@@ -2,7 +2,7 @@ package ie.calc.v1;
 
 import javax.swing.*;
 
-public class MassConverter extends JOptionPane {
+public class MassConverter extends JOptionPane implements DisplayUI {
     private String calcInput;
     public MassConverter(String input) {
         if(input == null || input.equals(""))
@@ -16,7 +16,7 @@ public class MassConverter extends JOptionPane {
         return Double.parseDouble(calcInput);
     }
 
-    public void showMassGUI() {
+    public void showUI() {
         CalcFunctions f = new CalcFunctions();
         Object[] option1 = {"Pound", "Stone", "Ounce", "EngNotation", "Quit"};
         int setSelection = showOptionDialog(null, "Convert " + getCalcInput() +" grams to",
@@ -25,16 +25,16 @@ public class MassConverter extends JOptionPane {
 
         switch(setSelection) {
             case 0:
-                f.GramsToPounds(getCalcInput());
+                JOptionPane.showMessageDialog(null,"Mass in Pounds: " + f.GramsToPounds(getCalcInput()) +"lbs");
                 break;
             case 1:
-                f.GramsToStone(getCalcInput());
+                JOptionPane.showMessageDialog(null,"Mass in Stone: " + f.GramsToStone(getCalcInput()) +"st");
                 break;
             case 2:
-                f.GramsToOunce(getCalcInput());
+                JOptionPane.showMessageDialog(null,"Mass in Ounce: " + f.GramsToOunce(getCalcInput()) +"oz");
                 break;
             case 3:
-                f.GramsToEngFormat(getCalcInput());
+                JOptionPane.showMessageDialog(null,"Grams in engineering notation: " + f.GramsToEngFormat(getCalcInput()));
                 break;
             case 4:
                 this.setVisible(false);

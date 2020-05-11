@@ -5,164 +5,121 @@ import java.awt.event.*;
 
 public class CalcConverterGUI extends JFrame {
 
+    private JButton enterButton;
+    private JButton backSpaceButton;
+    private JButton decimalPointButton;
+    private JButton cancelButton;
+    private JButton[] numButtonArray;
+    private JRadioButton[] selectionRadioButton;
+    private JTextField inputTextField;
+
     public CalcConverterGUI() {
         initComponents();
-        jRadioButton1.setEnabled(false);
-        jButton1.setEnabled(false);
+        selectionRadioButton[0].setEnabled(false);
+        enterButton.setEnabled(false);
     }
 
     public void enable() {
-        jTextField1.setEnabled(true);
-        jRadioButton1.setEnabled(false);
-        jRadioButton2.setEnabled(true);
-        jButton2.setEnabled(true);
-        for (JButton jButton : buttonArray) {
+        inputTextField.setEnabled(true);
+        selectionRadioButton[0].setEnabled(false);
+        selectionRadioButton[1].setEnabled(true);
+        cancelButton.setEnabled(true);
+        for (JButton jButton : numButtonArray) {
             jButton.setEnabled(true);
         }
-        jButton13.setEnabled(true);
-        jButton14.setEnabled(true);
-        jRadioButton3.setEnabled(true);
-        jRadioButton4.setEnabled(true);
-        jRadioButton5.setEnabled(true);
-        jRadioButton6.setEnabled(true);
+        backSpaceButton.setEnabled(true);
+        decimalPointButton.setEnabled(true);
+        selectionRadioButton[3].setEnabled(true);
+        selectionRadioButton[4].setEnabled(true);
+        selectionRadioButton[5].setEnabled(true);
     }
 
     public void disable() {
-        jTextField1.setEnabled(false);
-        jRadioButton1.setEnabled(true);
-        jRadioButton2.setEnabled(false);
-        jButton1.setEnabled(false);
-        jButton2.setEnabled(false);
-        for (JButton jButton : buttonArray) {
+        inputTextField.setEnabled(false);
+        selectionRadioButton[0].setEnabled(true);
+        selectionRadioButton[1].setEnabled(false);
+        enterButton.setEnabled(false);
+        cancelButton.setEnabled(false);
+        for (JButton jButton : numButtonArray) {
             jButton.setEnabled(false);
         }
-        jButton13.setEnabled(false);
-        jButton14.setEnabled(false);
-        jRadioButton3.setEnabled(false);
-        jRadioButton4.setEnabled(false);
-        jRadioButton5.setEnabled(false);
-        jRadioButton6.setEnabled(false);
+        backSpaceButton.setEnabled(false);
+        decimalPointButton.setEnabled(false);
+        selectionRadioButton[3].setEnabled(false);
+        selectionRadioButton[4].setEnabled(false);
+        selectionRadioButton[5].setEnabled(false);
     }
 
     private void initComponents() {
 
-        buttonGroup1 = new ButtonGroup();
-        buttonGroup2 = new ButtonGroup();
-        jTextField1 = new JTextField();
-        jRadioButton1 = new JRadioButton();
-        jRadioButton2 = new JRadioButton();
-        jRadioButton3 = new JRadioButton();
-        jRadioButton4 = new JRadioButton();
-        jRadioButton5 = new JRadioButton();
-        jRadioButton6 = new JRadioButton();
-        buttonArray = new JButton[10];
-        for(int ii=0; ii < buttonArray.length; ii++) {
-            buttonArray[ii] = new JButton(Integer.toString(ii));
-            buttonArray[ii].setFont(new Font("Tahoma", 1, 11)); // NOI18N
+        ButtonGroup buttonGroup1 = new ButtonGroup();
+        ButtonGroup buttonGroup2 = new ButtonGroup();
+        inputTextField = new JTextField();
+        numButtonArray = new JButton[10];
+        selectionRadioButton = new JRadioButton[6];
+        String[] radioButtonName = {"ON","OFF","Currency(Euro)","Mass(Grams)","Distance","Volume(Litres)"};
+        for(int ii = 0; ii < numButtonArray.length; ii++) {
+            numButtonArray[ii] = new JButton(Integer.toString(ii));
+            numButtonArray[ii].setFont(new Font("Tahoma", 1, 11));
             final int finalIi = ii;
-            buttonArray[ii].addActionListener(new ActionListener() {
-                public void actionPerformed(ActionEvent evt) {
-                    buttonArrayActionPerformed(evt, Integer.toString(finalIi));
-                }
-            });
+            numButtonArray[ii].addActionListener(evt -> buttonArrayActionPerformed(evt, Integer.toString(finalIi)));
         }
-        jButton1 = new JButton();
-        jButton2 = new JButton();
-        jButton13 = new JButton();
-        jButton14 = new JButton();
+        for(int ii = 0; ii < selectionRadioButton.length; ii++) {
+            selectionRadioButton[ii] = new JRadioButton(radioButtonName[ii]);
+            selectionRadioButton[ii].setFont(new Font("Tahoma", 1, 11));
+            final String finalSi = radioButtonName[ii];
+            selectionRadioButton[ii].addActionListener(evt -> selectionButton(evt, finalSi));
+        }
+        buttonGroup1.add(selectionRadioButton[0]);
+        buttonGroup1.add(selectionRadioButton[1]);
+        buttonGroup2.add(selectionRadioButton[2]);
+        buttonGroup2.add(selectionRadioButton[3]);
+        buttonGroup2.add(selectionRadioButton[4]);
+        buttonGroup2.add(selectionRadioButton[5]);
+
+        enterButton = new JButton();
+        cancelButton = new JButton();
+        backSpaceButton = new JButton();
+        decimalPointButton = new JButton();
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("CalcConverter");
         setLocation(new java.awt.Point(500, 250));
         setResizable(false);
 
-        jTextField1.setEditable(false);
-        jTextField1.setFont(new java.awt.Font("Tahoma", 1, 23)); // NOI18N
-        jTextField1.setHorizontalAlignment(JTextField.RIGHT);
+        inputTextField.setEditable(false);
+        inputTextField.setFont(new java.awt.Font("Tahoma", 1, 23)); // NOI18N
+        inputTextField.setHorizontalAlignment(JTextField.RIGHT);
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton1.setText("ON");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        enterButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        enterButton.setText("Enter");
+        enterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                EnterActionPerformed(evt);
             }
         });
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton2.setText("OFF");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        cancelButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        cancelButton.setText("C");
+        cancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                cancelActionPerformed(evt);
             }
         });
 
-        buttonGroup2.add(jRadioButton3);
-        jRadioButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton3.setText("Currency(Euro)");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+        backSpaceButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        backSpaceButton.setText("<---");
+        backSpaceButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
+                deleteActionPerformed(evt);
             }
         });
 
-        buttonGroup2.add(jRadioButton4);
-        jRadioButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton4.setText("Mass(Grams)");
-        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+        decimalPointButton.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        decimalPointButton.setText(".");
+        decimalPointButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton4ActionPerformed(evt);
-            }
-        });
-
-        buttonGroup2.add(jRadioButton5);
-        jRadioButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton5.setText("Distance(Km)");
-        jRadioButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton5ActionPerformed(evt);
-            }
-        });
-
-        buttonGroup2.add(jRadioButton6);
-        jRadioButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jRadioButton6.setText("Volume(Litres)");
-        jRadioButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton6ActionPerformed(evt);
-            }
-        });
-
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton1.setText("Enter");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton2.setText("C");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton13.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton13.setText("<---");
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
-            }
-        });
-
-        jButton14.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton14.setText(".");
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
+                dpActionPerformed(evt);
             }
         });
 
@@ -173,172 +130,148 @@ public class CalcConverterGUI extends JFrame {
                         .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextField1)
-                                        .addComponent(jButton2, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 124, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(inputTextField)
+                                        .addComponent(cancelButton, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 124, GroupLayout.PREFERRED_SIZE)
                                         .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jRadioButton2)
+                                                .addComponent(selectionRadioButton[1])
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jButton13, GroupLayout.PREFERRED_SIZE, 124, GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(backSpaceButton, GroupLayout.PREFERRED_SIZE, 124, GroupLayout.PREFERRED_SIZE))
                                         .addGroup(layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                                                         .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(jRadioButton1)
+                                                                .addComponent(selectionRadioButton[0])
                                                                 .addGap(18, 18, 18)
                                                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                                                        .addComponent(jRadioButton4)
-                                                                        .addComponent(jRadioButton3)
-                                                                        .addComponent(jRadioButton5)
-                                                                        .addComponent(jRadioButton6)))
+                                                                        .addComponent(selectionRadioButton[3])
+                                                                        .addComponent(selectionRadioButton[2])
+                                                                        .addComponent(selectionRadioButton[4])
+                                                                        .addComponent(selectionRadioButton[5])))
                                                         .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(buttonArray[7], GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(numButtonArray[7], GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
                                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(buttonArray[8], GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(numButtonArray[8], GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
                                                                 .addGap(18, 18, 18)
-                                                                .addComponent(buttonArray[9], GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)))
+                                                                .addComponent(numButtonArray[9], GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)))
                                                 .addGap(0, 0, Short.MAX_VALUE))
                                         .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addComponent(buttonArray[4], GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(numButtonArray[4], GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(buttonArray[5], GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(numButtonArray[5], GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(buttonArray[6], GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(numButtonArray[6], GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
                                         .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
                                                         .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(buttonArray[1], GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(numButtonArray[1], GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
                                                                 .addGap(10, 10, 10)
-                                                                .addComponent(buttonArray[2], GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
+                                                                .addComponent(numButtonArray[2], GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE))
                                                         .addGroup(layout.createSequentialGroup()
-                                                                .addComponent(buttonArray[0], GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
+                                                                .addComponent(numButtonArray[0], GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
                                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                .addComponent(jButton14, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)))
+                                                                .addComponent(decimalPointButton, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)))
                                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                                        .addComponent(jButton1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(buttonArray[3], GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE))))
+                                                        .addComponent(enterButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(numButtonArray[3], GroupLayout.DEFAULT_SIZE, 86, Short.MAX_VALUE))))
                                 .addContainerGap())
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
-                                .addComponent(jTextField1, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(inputTextField, GroupLayout.PREFERRED_SIZE, 47, GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jRadioButton1)
-                                        .addComponent(jRadioButton3))
+                                        .addComponent(selectionRadioButton[0])
+                                        .addComponent(selectionRadioButton[2]))
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jRadioButton4)
-                                        .addComponent(jButton13, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jRadioButton2))
+                                        .addComponent(selectionRadioButton[3])
+                                        .addComponent(backSpaceButton, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(selectionRadioButton[1]))
                                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jRadioButton5)
+                                .addComponent(selectionRadioButton[4])
                                 .addGap(7, 7, 7)
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jRadioButton6)
-                                        .addComponent(jButton2, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(selectionRadioButton[5])
+                                        .addComponent(cancelButton, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(buttonArray[7], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(buttonArray[9], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(buttonArray[8], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(numButtonArray[7], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(numButtonArray[9], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(numButtonArray[8], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(buttonArray[4], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(buttonArray[5], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(buttonArray[6], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(numButtonArray[4], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(numButtonArray[5], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(numButtonArray[6], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                                        .addComponent(buttonArray[3], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(buttonArray[2], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(buttonArray[1], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(numButtonArray[3], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(numButtonArray[2], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(numButtonArray[1], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-                                        .addComponent(buttonArray[0], GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                                        .addComponent(jButton1, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jButton14, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(numButtonArray[0], GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                                        .addComponent(enterButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(decimalPointButton, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        enable();
-    }
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        if(jRadioButton3.isSelected()) {
-
-            new CurrencyConverter(jTextField1.getText()).CurrencyGUI();
-        } else if (jRadioButton4.isSelected()) {
-            new MassConverter(jTextField1.getText()).showMassGUI();
-        } else if (jRadioButton5.isSelected()) {
-            new DistanceConverter(jTextField1.getText()).showDistanceGUI();
-        } else if (jRadioButton6.isSelected()) {
-            new VolumeConverter(jTextField1.getText()).showVolumeGUI();
+    private void EnterActionPerformed(java.awt.event.ActionEvent evt) {
+        if(selectionRadioButton[2].isSelected()) {
+            new CurrencyConverter(inputTextField.getText()).showUI();
+        } else if (selectionRadioButton[3].isSelected()) {
+            new MassConverter(inputTextField.getText()).showUI();
+        } else if (selectionRadioButton[4].isSelected()) {
+            new DistanceConverter(inputTextField.getText()).showUI();
+        } else if (selectionRadioButton[5].isSelected()) {
+            new VolumeConverter(inputTextField.getText()).showUI();
         }
     }
 
     private void buttonArrayActionPerformed(ActionEvent evt, String buttonID) {
-        jTextField1.setText(jTextField1.getText() + buttonID);
+        inputTextField.setText(inputTextField.getText() + buttonID);
     }
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-        jTextField1.setText("");
-    }
-
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {
-        disable();
-    }
-
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {
-        jButton1.setEnabled(true);
-    }
-
-    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {
-        jButton1.setEnabled(true);
-    }
-
-    private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {
-        jButton1.setEnabled(true);
-    }
-
-    private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {
-        jButton1.setEnabled(true);
-    }
-
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {
-        int length = jTextField1.getText().length();
-        int num = jTextField1.getText().length() - 1;
-        String store;
-
-        if(length > 0) {
-            StringBuilder back = new StringBuilder(jTextField1.getText());
-            back.deleteCharAt(num);
-            store=back.toString();
-            jTextField1.setText(store);
+    private void selectionButton(ActionEvent evt, String radioButtonID) {
+        switch (radioButtonID) {
+            case "ON":
+                enable();
+                break;
+            case "OFF":
+                disable();
+                break;
+            case "Currency(Euro)":
+            case "Volume(Litres)":
+            case "Mass(Grams)":
+            case "Distance":
+                enterButton.setEnabled(true);
+                break;
         }
     }
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {
-        jTextField1.setText(jTextField1.getText() + ".");
+    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {
+        inputTextField.setText("");
     }
 
-    private ButtonGroup buttonGroup1;
-    private ButtonGroup buttonGroup2;
-    private JButton jButton1;
-    private JButton jButton13;
-    private JButton jButton14;
-    private JButton jButton2;
-    private JButton[] buttonArray;
-    private JRadioButton jRadioButton1;
-    private JRadioButton jRadioButton2;
-    private JRadioButton jRadioButton3;
-    private JRadioButton jRadioButton4;
-    private JRadioButton jRadioButton5;
-    private JRadioButton jRadioButton6;
-    private JTextField jTextField1;
-    // End of variables declaration
+    private void deleteActionPerformed(java.awt.event.ActionEvent evt) {
+        int length = inputTextField.getText().length();
+        int num = inputTextField.getText().length() - 1;
+        String store;
+
+        if(length > 0) {
+            StringBuilder back = new StringBuilder(inputTextField.getText());
+            back.deleteCharAt(num);
+            store=back.toString();
+            inputTextField.setText(store);
+        }
+    }
+
+    private void dpActionPerformed(java.awt.event.ActionEvent evt) {
+        inputTextField.setText(inputTextField.getText() + ".");
+    }
 }

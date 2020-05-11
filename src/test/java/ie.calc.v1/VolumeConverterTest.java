@@ -5,23 +5,23 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class MassConverterTest {
+public class VolumeConverterTest {
 
     @BeforeEach
     void init(TestInfo testInfo, TestReporter testReporter) {
         testReporter.publishEntry("Testing" + " " + testInfo.getDisplayName());
     }
 
-    @DisplayName("Checking MassConverter Constructor with null input")
+    @DisplayName("Checking VolumeConverter Constructor with Invalid input")
     @Test
     void testConstructorFail() {
-        assertThrows(IllegalArgumentException.class, () -> new MassConverter(null));
+        assertThrows(IllegalArgumentException.class, () -> new MassConverter(""));
     }
 
-    @DisplayName("Checking MassConverter Constructor with valid input")
+    @DisplayName("Checking VolumeConverter Constructor with valid input")
     @Test
     void testConstructorPass() {
-        MassConverter mass = new MassConverter("100");
-        assertEquals(100,mass.getCalcInput());
+        VolumeConverter mass = new VolumeConverter("30");
+        assertEquals(30,mass.getCalcInput());
     }
 }

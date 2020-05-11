@@ -2,7 +2,7 @@ package ie.calc.v1;
 
 import javax.swing.*;
 
-public class DistanceConverter extends JOptionPane {
+public class DistanceConverter extends JOptionPane implements DisplayUI{
     private String calcInput;
     public DistanceConverter(String input) {
         if(input == null || input.equals(""))
@@ -16,7 +16,7 @@ public class DistanceConverter extends JOptionPane {
         return Double.parseDouble(calcInput);
     }
 
-    public void showDistanceGUI() {
+    public void showUI() {
         CalcFunctions f = new CalcFunctions();
         Object[] option1 = {"Meters", "Miles", "Yards", "Feet", "Inches", "EngNotation", "Quit"};
         int setSelection = showOptionDialog(null, "Convert " + getCalcInput() +" Metres to",
@@ -25,22 +25,23 @@ public class DistanceConverter extends JOptionPane {
 
         switch(setSelection) {
             case 0:
-                f.KmToMetres(getCalcInput());
+                JOptionPane.showMessageDialog(null,"Km in Metres: " + f.KmToMetres(getCalcInput()) +" Metres");
                 break;
             case 1:
-                f.KmToMiles(getCalcInput());
+                JOptionPane.showMessageDialog(null,"Km in Miles: " + f.KmToMiles(getCalcInput()) +" Miles");
                 break;
             case 2:
-                f.KmToYards(getCalcInput());
+                JOptionPane.showMessageDialog(null,"Km in Yards: " + f.KmToYards(getCalcInput()) +" Yards");
                 break;
             case 3:
-                f.KmToFeet(getCalcInput());
+                JOptionPane.showMessageDialog(null,"Km in Feet: " + f.KmToFeet(getCalcInput()) +" Feet");
                 break;
             case 4:
-                f.KmToInches(getCalcInput());
+                JOptionPane.showMessageDialog(null,"Km in Inches: " + f.KmToInches(getCalcInput()) +" Inches");
                 break;
             case 5:
-                f.KmToEngFormat(getCalcInput());
+                JOptionPane.showMessageDialog(null,"Km in engineering notation: " +
+                        f.KmToEngFormat(getCalcInput()));
                 break;
             case 6:
                 this.setVisible(false);
