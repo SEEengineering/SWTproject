@@ -1,7 +1,5 @@
 package ie.calc.v1;
 
-import javax.swing.*;
-
 public class CalcRunner {
     public static void main(String[] args) {
         try {
