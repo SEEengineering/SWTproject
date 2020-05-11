@@ -2,7 +2,7 @@ package ie.calc.v1;
 
 import javax.swing.*;
 
-public class VolumeConverter extends JOptionPane {
+public class VolumeConverter extends JOptionPane implements DisplayUI {
     private String calcInput;
     public VolumeConverter(String input) {
         if(input == null || input.equals(""))
@@ -16,7 +16,7 @@ public class VolumeConverter extends JOptionPane {
         return Double.parseDouble(calcInput);
     }
 
-    public void showVolumeGUI() {
+    public void showUI() {
         CalcFunctions f = new CalcFunctions();
         Object[] option1 = {"Gallons", "Pints", "Ounce", "Cubic foot","EngNotation", "Quit"};
         int setSelection = showOptionDialog(null, "Convert " + getCalcInput() +" litres to",
@@ -25,19 +25,19 @@ public class VolumeConverter extends JOptionPane {
 
         switch(setSelection) {
             case 0:
-                f.LitresToGallons(getCalcInput());
+                JOptionPane.showMessageDialog(null,"Litres in Gallons: " + f.LitresToGallons(getCalcInput()) +"gallons");
                 break;
             case 1:
-                f.LitresToPints(getCalcInput());
+                JOptionPane.showMessageDialog(null,"Litres in Pints: " + f.LitresToPints(getCalcInput()) +"pints");
                 break;
             case 2:
-                f.LitresToOunces(getCalcInput());
+                JOptionPane.showMessageDialog(null,"Litres in Ounces: " + f.LitresToOunces(getCalcInput()) +"ounces");
                 break;
             case 3:
-                f.LitresToCubicFoot(getCalcInput());
+                JOptionPane.showMessageDialog(null,"Litres in Cubic feet: " + f.LitresToCubicFoot(getCalcInput()) +"cubic feet");
                 break;
             case 4:
-                f.LitresToEng(getCalcInput());
+                JOptionPane.showMessageDialog(null,"Litres in engineering notation: " + f.LitresToEng(getCalcInput()));
                 break;
             case 5:
                 this.setVisible(false);

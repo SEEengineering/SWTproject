@@ -3,15 +3,23 @@ package ie.calc.v1;
 import java.util.StringTokenizer;
 
 public class EngNotation {
-    private final static int PREFIX_OFFSET = 1;
-    private final static String[] PREFIX_ARRAY = {"mg", "g", "kg"};
+    private int PREFIX_OFFSET;
+    private String[] PREFIX_ARRAY;
     private double engValue;
     private String eng;
-    public EngNotation(double calcInput) {
+    public EngNotation(double calcInput, String[] prefix_array,int prefix_offset ) {
         if(calcInput < 0)
             throw new IllegalArgumentException("Must be greater than 0");
         else
             this.engValue = calcInput;
+        if(prefix_array.length < 1)
+            throw new IllegalArgumentException("Must be greater than 1");
+        else
+            this.PREFIX_ARRAY = prefix_array;
+        if(prefix_offset < 0)
+            throw new IllegalArgumentException("Must be greater than 0");
+        else
+            this.PREFIX_OFFSET = prefix_offset;
         eng = convert(engValue, decimalPoint());
     }
 

@@ -57,7 +57,7 @@ public class CalcConverterGUI extends JFrame {
         inputTextField = new JTextField();
         numButtonArray = new JButton[10];
         selectionRadioButton = new JRadioButton[6];
-        String[] radioButtonName = {"ON","OFF","Currency","Mass","Distance","Volume"};
+        String[] radioButtonName = {"ON","OFF","Currency(Euro)","Mass(Grams)","Distance","Volume(Litres)"};
         for(int ii = 0; ii < numButtonArray.length; ii++) {
             numButtonArray[ii] = new JButton(Integer.toString(ii));
             numButtonArray[ii].setFont(new Font("Tahoma", 1, 11));
@@ -223,13 +223,13 @@ public class CalcConverterGUI extends JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         if(selectionRadioButton[2].isSelected()) {
-            new CurrencyConverter(inputTextField.getText()).CurrencyGUI();
+            new CurrencyConverter(inputTextField.getText()).showUI();
         } else if (selectionRadioButton[3].isSelected()) {
-            new MassConverter(inputTextField.getText()).showMassGUI();
+            new MassConverter(inputTextField.getText()).showUI();
         } else if (selectionRadioButton[4].isSelected()) {
 
         } else if (selectionRadioButton[5].isSelected()) {
-
+            new VolumeConverter(inputTextField.getText()).showUI();
         }
     }
 
@@ -245,9 +245,9 @@ public class CalcConverterGUI extends JFrame {
             case "OFF":
                 disable();
                 break;
-            case "Currency":
-            case "Volume":
-            case "Mass":
+            case "Currency(Euro)":
+            case "Volume(Litres)":
+            case "Mass(Grams)":
             case "Distance":
                 jButton1.setEnabled(true);
                 break;
