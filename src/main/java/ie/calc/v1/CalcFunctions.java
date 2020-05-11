@@ -1,82 +1,88 @@
 package ie.calc.v1;
 
-import javax.swing.*;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
 public class CalcFunctions {
-    public boolean check(String input){
-        try{
-        double x = Double.parseDouble(input);
-        if (x>=10 || x<0);
-        return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
+    DecimalFormat df = new DecimalFormat("#.##");
+    public double val;
+
+    public CalcFunctions() {
+        df.setRoundingMode(RoundingMode.CEILING);
     }
 
-    public void EuroTopound(double Minput){
-        double pound = Minput * 0.88 ;
-        JOptionPane.showMessageDialog(null,"Amount of GBP:" + pound+"£");
+    public double EuroTopound(double Minput){
+        return Minput * 0.88;
     }
 
-    public void EuroToJPY(double Minput){
-        double JPY = Minput * 117.03;
-        JOptionPane.showMessageDialog(null,"Amount of JPY:" + JPY +"kr");
+    public String EuroToJPY(double Minput){
+       return df.format(Minput * 117.03);
+
     }
 
-    public void EuroToUS(double Minput){
-        double US = Minput * 1.10;
-        JOptionPane.showMessageDialog(null,"Amount of USD:" + US +"$");
+    public String EuroToUS(double Minput){
+        return df.format(Minput * 1.10);
     }
 
-    public void EuroToBitcoin(double Minput){
-        double Bitcoin = Minput / 7784.37;
-        JOptionPane.showMessageDialog(null,"Amount of BTC:" + Bitcoin +"฿");
+    public String EuroToBitcoin(double Minput){
+        return df.format(Minput / 7784.37);
     }
 
-    public void EuroToAustraliandollar(double Minput){
-        double AustralianDollar = Minput * 1.68;
-        JOptionPane.showMessageDialog(null,"Amount of AUS:" + AustralianDollar +"a$");
+    public double EuroToAustraliandollar(double Minput) {
+        return Minput * 1.68;
     }
 
-    public void GramsToPounds(double Minput) {
-        double pound = Minput / 454;
-        JOptionPane.showMessageDialog(null,"Mass in Pounds: " + pound +"lbs");
+    public String GramsToPounds(double Minput) {
+        df = new DecimalFormat("#.######");
+        return df.format(Minput / 454);
     }
 
-    public void GramsToStone(double Minput) {
-        double stone = Minput / 6350;
-        JOptionPane.showMessageDialog(null,"Mass in Stone: " + stone +"st");
-    }
-    public void GramsToOunce(double Minput) {
-        double ounce = Minput / 28.35;
-        JOptionPane.showMessageDialog(null,"Mass in Ounce: " + ounce +"oz");
-    }
-    public void GramsToEngFormat(double Minput) {
-        JOptionPane.showMessageDialog(null,"Grams in engineering notation: " +
-                new EngNotation(Minput).getEng());
+    public String GramsToStone(double Minput) {
+        df = new DecimalFormat("#.####");
+        return df.format(Minput / 6350);
     }
 
-    public void LitresToGallons(double Minput) {
-        double gallons = Minput / 4.546;
-        JOptionPane.showMessageDialog(null,"Litres in Gallons: " + gallons +"gallons");
+    public String GramsToOunce(double Minput) {
+        df = new DecimalFormat("#.####");
+        return df.format(Minput / 28.35);
+    }
+    public String GramsToEngFormat(double Minput) {
+        String[] prefixArray = {"mg", "g", "kg"};
+        int prefixOffset = 1;
+        return new EngNotation(Minput,prefixArray,prefixOffset).getEng();
     }
 
-    public void LitresToPints(double Minput) {
-        double pint = Minput * 1.76;
-        JOptionPane.showMessageDialog(null,"Litres in Pints: " + pint +"pints");
-    }
-    public void LitresToOunces(double Minput) {
-        double ounce = Minput * 35.195;
-        JOptionPane.showMessageDialog(null,"Litres in Ounces: " + ounce +"ounces");
+    public String LitresToGallons(double Minput) {
+        df = new DecimalFormat("#.####");
+        return df.format(Minput / 4.546);
     }
 
-    public void LitresToCubicFoot(double Minput) {
-        double cubicFoot = Minput / 28.317;
-        JOptionPane.showMessageDialog(null,"Litres in Cubic feet: " + cubicFoot +"cubic feet");
+    public String LitresToPints(double Minput) {
+        df = new DecimalFormat("#.####");
+        return df.format(Minput * 1.76);
+    }
+    public String LitresToOunces(double Minput) {
+        df = new DecimalFormat("#.####");
+        return df.format(Minput * 35.195);
+
     }
 
-    public void LitresToEng(double Minput) {
-        JOptionPane.showMessageDialog(null,"Grams in engineering notation: " +
-                new EngNotation(Minput).getEng());
+    public String LitresToCubicFoot(double Minput) {
+        df = new DecimalFormat("#.####");
+        return df.format(Minput / 28.317);
+    }
+
+    public String LitresToEng(double Minput) {
+        String[] prefixArray = {"ml", "l", "kl"};
+        int prefixOffset = 1;
+        return new EngNotation(Minput,prefixArray,prefixOffset).getEng();
+    }
+
+    public double getVal() {
+        return val;
+    }
+
+    public void setVal(double val) {
+        this.val = val;
     }
 }
