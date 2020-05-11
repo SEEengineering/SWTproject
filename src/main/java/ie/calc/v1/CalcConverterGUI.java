@@ -57,7 +57,7 @@ public class CalcConverterGUI extends JFrame {
         inputTextField = new JTextField();
         numButtonArray = new JButton[10];
         selectionRadioButton = new JRadioButton[6];
-        String[] radioButtonName = {"ON","OFF","Currency(Euro)","Mass(Grams)","Distance","Volume(Litres)"};
+        String[] radioButtonName = {"ON","OFF","Currency(Euro)","Mass(Grams)","Distance(Km)","Volume(Litres)"};
         for(int ii = 0; ii < numButtonArray.length; ii++) {
             numButtonArray[ii] = new JButton(Integer.toString(ii));
             numButtonArray[ii].setFont(new Font("Tahoma", 1, 11));
@@ -248,7 +248,7 @@ public class CalcConverterGUI extends JFrame {
             case "Currency(Euro)":
             case "Volume(Litres)":
             case "Mass(Grams)":
-            case "Distance":
+            case "Distance(Km)":
                 enterButton.setEnabled(true);
                 break;
         }
