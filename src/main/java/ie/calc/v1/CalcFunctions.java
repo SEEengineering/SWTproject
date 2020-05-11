@@ -115,7 +115,4 @@ public class CalcFunctions {
         JOptionPane.showMessageDialog(null,"Km in engineering notation: " +
                 new EngNotation(Minput).getEng());
     }
-
-
-
 }
