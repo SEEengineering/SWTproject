@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     stages {
+
         stage ('Compile Stage') {
 
             steps {
@@ -25,11 +26,12 @@ pipeline {
                 sh 'echo "jar file" > SWTproject-1.0-SNAPSHOT.jar'
             }
         }
+
     }
-        post {
-            always {
-                archiveArtifacts artifacts: 'SWTproject-1.0-SNAPSHOT.jar', onlyIfSuccessful: true
-            }
+
+    post {
+        always {
+            archiveArtifacts artifacts: 'SWTproject-1.0-SNAPSHOT.jar', onlyIfSuccessful: true
         }
     }
 }
