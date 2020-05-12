@@ -74,4 +74,13 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <distributionManagement>
+        <repository>
+            <uniqueVersion>false</uniqueVersion>
+            <id>GMIT</id>
+            <name>Some Repository</name>
+            <url>https://github.com/SEEengineering/SWTproject/</url>
+            <layout>default</layout>
+        </repository>
+    </distributionManagement>
 </project>
