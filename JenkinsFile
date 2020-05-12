@@ -20,21 +20,16 @@ pipeline {
             }
         }
 
-
-
-
-        stages {
-            stage('Ready to Deploy') {
-                steps {
-                    sh 'echo "jar file" > SWTproject-1.0-SNAPSHOT.jar'
-                }
+        stage('Ready to Deploy') {
+            steps {
+                sh 'echo "jar file" > SWTproject-1.0-SNAPSHOT.jar'
             }
         }
+    }
         post {
             always {
                 archiveArtifacts artifacts: 'SWTproject-1.0-SNAPSHOT.jar', onlyIfSuccessful: true
             }
         }
-
     }
 }
