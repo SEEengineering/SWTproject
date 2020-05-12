@@ -5,23 +5,23 @@ import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class VolumeConverterTest {
+public class DistanceConverterTest {
 
     @BeforeEach
     void init(TestInfo testInfo, TestReporter testReporter) {
         testReporter.publishEntry("Testing" + " " + testInfo.getDisplayName());
     }
 
-    @DisplayName("Checking VolumeConverter Constructor with Invalid input")
+    @DisplayName("Checking DistanceConverter Constructor with Invalid input")
     @Test
     void testConstructorFail() {
-        assertThrows(IllegalArgumentException.class, () -> new VolumeConverter(""));
+        assertThrows(IllegalArgumentException.class, () -> new DistanceConverter(""));
     }
 
-    @DisplayName("Checking VolumeConverter Constructor with valid input")
+    @DisplayName("Checking DistanceConverter Constructor with valid input")
     @Test
     void testConstructorPass() {
-        VolumeConverter vol = new VolumeConverter("30");
-        assertEquals(30,vol.getCalcInput());
+        DistanceConverter dist = new DistanceConverter("30");
+        assertEquals(30,dist.getCalcInput());
     }
 }
