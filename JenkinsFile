@@ -6,7 +6,7 @@ pipeline {
         stage ('Checking necessary packages') {
             steps{
                 echo "Checking if Maven, Java and git are installed and running."
-                sh 'mvn -version'
+                sh 'mvn -v'
                 sh 'java -version'
                 sh 'git --version'
             }
