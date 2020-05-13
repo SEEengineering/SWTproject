@@ -104,7 +104,7 @@ public class CalcFunctions {
     }
 
     public String KmToEngFormat(double Minput) {
-        String[] prefixArray = {"mm", "m", "km"};
+        String[] prefixArray = {"m", "km", "km"};
         int prefixOffset = 1;
         return new EngNotation(Minput,prefixArray,prefixOffset).getEng();
     }
