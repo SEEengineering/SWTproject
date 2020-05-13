@@ -98,4 +98,40 @@ public class CalcFunctionTest {
     void testLitresToEng() {
         assertEquals("100.0l",cf.LitresToEng(cf.getVal()));
     }
+
+    @DisplayName("Checking KmToMetres Method")
+    @Test
+    void testKmToMetres() {
+        assertEquals("100000",cf.KmToMetres(cf.getVal()));
+    }
+
+    @DisplayName("Checking KmToMiles Method")
+    @Test
+    void testKmToMiles() {
+        assertEquals("62.150404",cf.KmToMiles(cf.getVal()));
+    }
+
+    @DisplayName("Checking KmToYards Method")
+    @Test
+    void testKmToYards() {
+        assertEquals("109400",cf.KmToYards(cf.getVal()));
+    }
+
+    @DisplayName("Checking KmToFeet Method")
+    @Test
+    void testKmToFeet() {
+        assertEquals("328100",cf.KmToFeet(cf.getVal()));
+    }
+
+    @DisplayName("Checking KmToInches Method")
+    @Test
+    void testKmToInches() {
+        assertEquals("3937000",cf.KmToInches(cf.getVal()));
+    }
+
+    @DisplayName("Checking KmToEngFormat Method")
+    @Test
+    void testKmToEngFormat() {
+        assertEquals("100.0km",cf.KmToEngFormat(cf.getVal()));
+    }
 }

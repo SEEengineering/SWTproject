@@ -1,0 +1,54 @@
+pipeline {
+    agent any
+         tools {
+             maven 'Maven'
+             jdk 'JDK 8'
+         }
+
+    stages {
+
+        stage ('Checking necessary packages') {
+            steps{
+                echo "Checking if Maven, Java and git are installed and running."
+                sh 'mvn -v'
+                sh 'java -version'
+                sh 'git --version'
+            }
+        }
+
+        stage ('Compile Stage') {
+
+            steps {
+                withMaven(maven : 'Maven') {
+                    echo "Running Maven Clean Compile"
+                    sh 'mvn clean compile'
+                }
+            }
+        }
+
+        stage ('Testing Stage') {
+
+            steps {
+                withMaven(maven : 'Maven') {
+                    echo "Running Maven Test"
+                    sh 'mvn test'
+                }
+            }
+        }
+
+        stage('Deployment Stage') {
+            steps {
+                echo "Saved jar file, now ready to deploy to nexus repository!"
+                sh 'echo "jar file" > SWTproject-1.0-SNAPSHOT.jar'
+            }
+        }
+
+    }
+
+    post {
+        always {
+            echo "Save the jar file only if build is successful"
+            archiveArtifacts artifacts: 'SWTproject-1.0-SNAPSHOT.jar', onlyIfSuccessful: true
+        }
+    }
+}

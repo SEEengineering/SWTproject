@@ -1,3 +1,9 @@
+//Github Repo: https://github.com/SEEengineering/SWTproject
+//Software with Test Pipeline Project, Final year, GMIT
+//Anuoluwapo Oguntayo, Darragh Freely, Alan Serhan, McHarrison Kouao.
+//11-05-2020
+
+
 package ie.calc.v1;
 
 public class CalcRunner {

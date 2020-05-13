@@ -19,7 +19,7 @@ public class DistanceConverter extends JOptionPane implements DisplayUI{
     public void showUI() {
         CalcFunctions f = new CalcFunctions();
         Object[] option1 = {"Meters", "Miles", "Yards", "Feet", "Inches", "EngNotation", "Quit"};
-        int setSelection = showOptionDialog(null, "Convert " + getCalcInput() +" Metres to",
+        int setSelection = showOptionDialog(null, "Convert " + getCalcInput() +" Km to",
                 "Distance converter", YES_NO_CANCEL_OPTION, QUESTION_MESSAGE, null,
                 option1, option1[2]);
 
